@@ -1,4 +1,5 @@
 # antlr4-vba-parser
+
 Navigate antlr VBA Parse Trees in python.
 
 <!--lint disable no-inline-padding-->
@@ -20,11 +21,40 @@ Navigate antlr VBA Parse Trees in python.
 
 <!--lint enable no-inline-padding-->
 
+This python package provides an interface to the the antlr4 tooling and allows parsing
+and lexing of VBA grammar.
+
+```python
+>>> from antlr4_vba_parser.vba_parser import Antlr4VbaParser
+
+>>> parsed = Antlr4VbaParser("""
+... SUB square(x)
+...   DIM y: REM Some comment
+...   y = x * x  ' same as x**2
+... END SUB
+... """)  # also accepts a filepath
+
+>>> from pprint import pprint
+>>> pprint(parsed)
+('(startRule (module (endOfLine \\n) (moduleBody (moduleBodyElement (subStmt '
+ 'SUB   (ambiguousIdentifier square) (argList ( (arg (ambiguousIdentifier x)) '
+ ')) (endOfStatement (endOfLine \\n   )) (block (blockStmt (variableStmt DIM   '
+ '(variableListStmt (variableSubStmt (ambiguousIdentifier y))))) '
+ '(endOfStatement :   (endOfLine (remComment REM Some comment)) (endOfLine '
+ '\\n   )) (blockStmt (letStmt (implicitCallStmt_InStmt '
+ '(iCS_S_VariableOrProcedureCall (ambiguousIdentifier y)))   =   (valueStmt '
+ '(valueStmt (implicitCallStmt_InStmt (iCS_S_VariableOrProcedureCall '
+ '(ambiguousIdentifier x))))   *   (valueStmt (implicitCallStmt_InStmt '
+ '(iCS_S_VariableOrProcedureCall (ambiguousIdentifier x))))))) (endOfStatement '
+ "(endOfLine    (comment ' same as x**2)) (endOfLine \\n))) END SUB)) "
+ '(endOfLine \\n))) <EOF>)')
+```
+
 ## Installation
 
-antlr4_vba_parser itself is a pure python package, but depends on pandas and the SciPy
-stack. Note: It optionally uses geopandas as well, which is often difficult
-to install without `conda`.
+`antlr4_vba_parser` itself is a pure python package, but depends on a `java` runtime in order to run.
+The ANTLR4 jar needed to perform the parsing/lexing is included in the package distribution and
+is bundled from third-party sources at the time of packaging with `setup.py build`.
 
 To install, simply try:
 
@@ -45,7 +75,7 @@ pip install -e .
 ```
 
 This will install the package in development mode. Note that is you have forked
-the repo then change the URL as appropriate. 
+the repo then change the URL as appropriate.
 
 ## Documentation
 
@@ -58,19 +88,6 @@ To generate the HTML documentation, simply do the following:
 cd docs
 make html
 ```
-
-### PDF generation
-
-PDF documentation is currently only supported on Ubuntu systems, but needs
-additional packages to run. These can be installed by:
-
-```bash
-cd docs
-chmod +x setup.sh
-./setup.sh
-```
-
-PDFs can then be created with `make pdf` from within the `docs/` directory.
 
 ## Contribution Guidelines
 
@@ -90,9 +107,18 @@ please can the following areas be considered before submitting a PR for review:
 
 ## License
 
-Released under the MIT license.
+Released under the BSD license.
 
 ## TODO
 
 This package is mostly a proof of concept and as such there are a number of
 areas to add to, fix and improve.
+
+- Create listener(s) capable of capturing contextual information and creating a JSON-friendly dictionary output.
+- Produce simple script turns the above into a command line tool.
+- Contribute to [`oletools.vba`](https://github.com/decalage2/oletools/blob/master/oletools/olevba.py) 
+  to hopefully extend capabilities using this package.
+
+
+## Acknowledgements
+- Andrew Lockhart for the initial idea of combining ANTLR4 and python to handle VBA grammar
