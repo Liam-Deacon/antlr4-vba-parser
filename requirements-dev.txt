@@ -1,0 +1,80 @@
+# essentials
+twine
+sphinx
+setuptools>=37
+cython
+cython-setuptools
+setuptools-cythonize
+nbstripout
+pbr
+wheel
+packaging
+
+# security analysis
+bandit
+git+https://github.com/Lightslayer/dodgy  # PR16 pending: Has UTF8 encoding fixes and CLI + CI via GitHub Actions
+safety
+yolk3k  # get status of development
+
+# linters
+autopep8
+black; python_version >= "3.6"
+pylama
+pylint
+pyflakes<2.0.0
+flake8<3.0.0
+prospector[with_everything]  # conflicts with pycodestyle, needs an update to PyPI
+lxml  # needed for mypy
+metrics
+metrics.bumpversion
+metrics.gitinfo
+metrics.pylint
+metrics.pytest-cov
+mypy
+yapf  # format code according to style guide
+
+# checkers
+eradicate  # removes commented out dead code
+pycycle  # checks for circular imports
+isort[requirements,pipfile]  # order of imports
+typycal; python_version >= "3.6"
+
+pyroma  # tool for checking a package's best practices
+check-manifest  # checks MANIFEST.in and setup.py for issues
+
+# license/dependency management
+pipdeptree
+pipreqs
+pip-licenses
+pydeps
+
+# documentation
+docutils  #==0.14
+pycodestyle==2.4.0  # prospector==1.2.0 is incompatible with pycodestyle==2.5.0
+doc8
+numpydoc
+sphinx-autodoc-typehints
+sphinx-autodoc-napoleon-typehints
+sphinx_rtd_theme
+nbsphinx
+sphinx-git  # embeds latest changes from git into docs
+IPython
+sphinxcontrib-autoprogram  # generate CLI --help output easily
+sphinxcontrib-programoutput  # execute code and show the result
+sphinxcontrib-jupyter  # execute code and show the result
+sphinxcontrib-svg2pdfconverter  # for SVG diagrams rather than poor resolution PNG images
+jupyter_sphinx  # execute code using Jupyter 
+pyquickhelper  # a collection of useful extras
+sphinx-gallery  # create a gallery of plots
+sphinx_selective_exclude
+#sphinx-pyreverse   # create UML diagrams
+git+https://github.com/RobinPetit/sphinx-pyreverse.git@compatibility_sphinx_1.7#egg=sphinx-pyreverse # version of sphinx-pyreverse with 1.7+ support
+jupyter
+
+# sphinx extensions
+matplotlib
+
+# other
+echo
+2to3
+
