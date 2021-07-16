@@ -107,7 +107,7 @@ class BuildPyCommand(setuptools.command.build_py.build_py):
   """Custom build command."""
 
   def run(self):
-    self.run_command('build_antl4')
+    self.run_command('build_antlr4')
     setuptools.command.build_py.build_py.run(self)
 
 
