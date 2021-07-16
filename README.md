@@ -71,6 +71,7 @@ conda environment before activating it and then run the following:
 git clone https://github.com/Liam-Deacon/antlr4-vba-parser
 cd antlr4-vba-parser
 pip install -r requirements-dev.txt requirements-test.txt -r requirements.txt
+python setup.py build_antlr4  # needed to generate python bindings
 pip install -e .
 ```
 

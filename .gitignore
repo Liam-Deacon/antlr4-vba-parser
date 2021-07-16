@@ -139,7 +139,8 @@ package-lock.json
 
 # data files
 data/*
-antlr4_vba_parser/vba.[it]*
+antlr4_vba_parser/vba.[git]*
 antlr4_vba_parser/vbaLexer.*
 antlr4_vba_parser/vbaListener.*
 antlr4_vba_parser/vbaParser.*
+antlr4_vba_parser/*.jar

@@ -97,7 +97,7 @@ class AntlrBuildCommand(distutils.cmd.Command):
     subprocess.check_call(command)
 
     dest_dir = 'antlr4_vba_parser'
-    for filename in glob.glob(os.path.join(source_dir, '*.[itp]*')):
+    for filename in glob.glob(os.path.join(source_dir, '*.*')):
         shutil.copy2(filename, dest_dir)
         print('Copied {filename} -> {dest_dir}'.format(**locals()))
 
@@ -164,7 +164,7 @@ if __name__ == '__main__':
         include_package_data=True,
         cmdclass={
             'venv': VirtualenvCommand,
-            'build_antl4': AntlrBuildCommand,
+            'build_antlr4': AntlrBuildCommand,
             'build_py': BuildPyCommand,
         },
         **setup_kwargs

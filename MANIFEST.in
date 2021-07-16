@@ -1,7 +1,8 @@
+recursive-exclude ./venv/ *
 recursive-exclude test/ *
 recursive-include antlr4_vba_parser/ *.py *.pyx
-recursive-include data/ *
-recursive-include ./ *.ipynb
+recursive-exclude data/ *
+recursive-exclude ./ *.ipynb
 recursive-exclude .ipynb_checkpoints/ *
 recursive-exclude ./ *Untitled*.ipynb 
 recursive-exclude build/ *
@@ -14,4 +15,4 @@ include setup.py setup.cfg
 include requirements*.txt
 recursive-exclude docker/* *
 recursive-exclude **/.mypy_cache/* *
-recursive-include antlr4_vba_parser/ *.tokens *.interp
+recursive-include antlr4_vba_parser/ *.tokens *.interp *.jar
